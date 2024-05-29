@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-	<div class="header-box fw-bold fs-2 p-3 text-center bg-black">BOOLFLIX</div>
+	<div class="header-box fw-bold fs-1 p-3 text-center bg-black">BOOLFLIX</div>
 </template>
 
 <style scoped>
