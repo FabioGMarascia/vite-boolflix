@@ -7,6 +7,12 @@ export default {
 };
 </script>
 
-<template></template>
+<template>
+	<div class="header-box fw-bold fs-2 p-3 text-center bg-black">BOOLFLIX</div>
+</template>
 
-<style scoped></style>
+<style scoped>
+.header-box {
+	color: red;
+}
+</style>
