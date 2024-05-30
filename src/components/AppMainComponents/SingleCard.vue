@@ -55,40 +55,56 @@ export default {
 </script>
 
 <template>
-	<div class="col-2 mb-3 px-0 m-4">
+	<div class="card cardBox col-2 mb-3 px-0 m-4 border-2">
 		<img
 			:src="
 				element.poster_path != null
 					? `https://image.tmdb.org/t/p/w342` + element.poster_path
 					: getImg(placeholderImgPath)
 			"
-			class="w-100" />
+			class="card-img w-100" />
 
 		<div
-			class="cardInfoBox text-center py-4 px-2 border border-2 rounded-bottom bg-white lh-lg fw-bold">
-			<h5 class="fw-bold">Title: {{ getTitles(element.title, element.name) }}</h5>
-			<div>Original title: {{ getTitles(element.original_title, element.original_name) }}</div>
-			<div class="languageBox">
+			class="card-img-overlay cardInfoBox text-center p-2 fw-bold text-white bg-black overflow-auto lh-lg">
+			<div class="card-text fw-bold subtitle">TITLE:</div>
+			<span>{{ getTitles(element.title, element.name) }} </span>
+
+			<div class="card-text subtitle">ORIGINAL TITLE:</div>
+			<span>{{ getTitles(element.original_title, element.original_name) }}</span>
+
+			<div class="languageBox card-text subtitle">
 				<div v-if="checkFlag">
-					Language: <img class="flagImg" :src="getFlags(element.original_language)" />
+					LANGUAGE:
+					<span class="ms-2"
+						><img class="flagImg" :src="getFlags(element.original_language)" />
+					</span>
 				</div>
 
-				<div v-else>Language: {{ element.original_language }}</div>
+				<div v-else>
+					LANGUAGE: <span class="ms-2">{{ element.original_language }}</span>
+				</div>
 			</div>
 
-			<div class="voteBox">
-				Vote: <i v-for="n in getStars(element.vote_average)" class="fa-solid fa-star"></i>
+			<div class="voteBox card-text subtitle">
+				VOTE: <i v-for="n in getStars(element.vote_average)" class="fa-solid fa-star"></i>
 				<i v-for="n in getEmptyStars(element.vote_average)" class="fa-regular fa-star"></i>
+				<span class="ms-2">{{ element.vote_average.toFixed(1) }} </span>
 			</div>
+
+			<div class="card-text subtitle">OVERVIEW:</div>
+			<span>{{ element.overview }}</span>
 		</div>
 	</div>
+
+	<!-- <div class="card">
+		<img src="./assets/placeholder-locandine.jpg" class="card-img w-25" />
+		<div class="card-img-overlay">
+			<h2 class="card-title text-black">titolo</h2>
+		</div>
+	</div> -->
 </template>
 
 <style scoped>
-.cardInfoBox {
-	height: 15.5rem;
-}
-
 img {
 	height: 27rem;
 }
@@ -101,5 +117,21 @@ img {
 
 i {
 	color: #ffd43b;
+}
+
+.cardInfoBox {
+	opacity: 0;
+}
+
+.cardInfoBox:hover {
+	opacity: 1;
+}
+
+.subtitle {
+	color: red;
+}
+
+span {
+	color: white;
 }
 </style>

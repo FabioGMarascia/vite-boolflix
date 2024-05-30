@@ -16,7 +16,7 @@ export default {
 
 <template>
 	<div class="row mx-0">
-		<div class="logo-box col-6 fw-bold display-6 py-4">BOOLFLIX</div>
+		<div class="logo-box col-6 fw-bold display-6 py-3">BOOLFLIX</div>
 
 		<div class="col-6 px-0 text-end my-auto">
 			<a
