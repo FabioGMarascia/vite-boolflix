@@ -153,6 +153,6 @@ export default {
 }
 
 .cardListBox {
-	padding: 4rem 5rem;
+	padding: 4rem 6rem;
 }
 </style>

@@ -106,7 +106,7 @@ export default {
 
 <style scoped>
 img {
-	height: 27rem;
+	height: 25rem;
 }
 
 .flagImg {
