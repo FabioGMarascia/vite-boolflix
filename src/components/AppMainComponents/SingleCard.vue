@@ -2,7 +2,7 @@
 import store from "../../data/store.js";
 
 export default {
-	name: "TvSeriesCard",
+	name: "SingleCard",
 	components: {
 		store,
 	},
@@ -43,6 +43,13 @@ export default {
 			let voteToStar = 5 - Math.round(item / 2);
 			return voteToStar;
 		},
+		getTitles(element, element2) {
+			if (element == undefined) {
+				return element2;
+			} else {
+				return element;
+			}
+		},
 	},
 };
 </script>
@@ -59,8 +66,8 @@ export default {
 
 		<div
 			class="cardInfoBox text-center py-4 px-2 border border-2 rounded-bottom bg-white lh-lg fw-bold">
-			<h5 class="fw-bold">Title: {{ element.name }}</h5>
-			<div>Original title: {{ element.original_name }}</div>
+			<h5 class="fw-bold">Title: {{ getTitles(element.title, element.name) }}</h5>
+			<div>Original title: {{ getTitles(element.original_title, element.original_name) }}</div>
 			<div class="languageBox">
 				<div v-if="checkFlag">
 					Language: <img class="flagImg" :src="getFlags(element.original_language)" />

@@ -138,7 +138,7 @@ export default {
 		</div>
 	</div>
 
-	<div class="cardListBox bg-black p-5">
+	<div class="cardListBox bg-black">
 		<CardList />
 	</div>
 </template>
@@ -150,5 +150,9 @@ export default {
 
 .searchBtn {
 	color: red;
+}
+
+.cardListBox {
+	padding: 4rem 5rem;
 }
 </style>

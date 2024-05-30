@@ -1,18 +1,23 @@
 <script>
+import Jumbotron from "./AppHeaderComponents/Jumbotron.vue";
+import NavBar from "./AppHeaderComponents/NavBar.vue";
+
 export default {
 	name: "AppHeader",
-	data() {
-		return {};
+	components: {
+		Jumbotron,
+		NavBar,
 	},
 };
 </script>
 
 <template>
-	<div class="header-box fw-bold fs-1 p-3 text-center bg-black">BOOLFLIX</div>
+	<div class="headerBox bg-black">
+		<div class="container">
+			<NavBar />
+		</div>
+	</div>
+	<Jumbotron />
 </template>
 
-<style scoped>
-.header-box {
-	color: red;
-}
-</style>
+<style scoped></style>
