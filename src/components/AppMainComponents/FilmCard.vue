@@ -21,19 +21,27 @@ export default {
 			return risultato.href;
 		},
 		getFlags(item) {
-			if (item == `it`) {
+			if (item == "it") {
 				return this.getImg(store.flags.it);
-			} else if (item == `en`) {
+			} else if (item == "en") {
 				return this.getImg(store.flags.en);
-			} else if (item == `ja`) {
+			} else if (item == "ja") {
 				return this.getImg(store.flags.ja);
-			} else if (item == `fr`) {
+			} else if (item == "fr") {
 				return this.getImg(store.flags.fr);
-			} else if (item == `es`) {
+			} else if (item == "es") {
 				return this.getImg(store.flags.es);
 			} else {
 				this.checkFlag = false;
 			}
+		},
+		getStars(item) {
+			let voteToStar = Math.round(item / 2);
+			return voteToStar;
+		},
+		getEmptyStars(item) {
+			let voteToStar = 5 - Math.round(item / 2);
+			return voteToStar;
 		},
 	},
 };
@@ -49,9 +57,10 @@ export default {
 			"
 			class="w-100" />
 
-		<div class="cardInfoBox text-center py-4 px-2 border border-2 rounded-bottom bg-white">
-			<h5 class="fw-bold">{{ "Title: " + element.title }}</h5>
-			<div>{{ "Original title: " + element.original_title }}</div>
+		<div
+			class="cardInfoBox text-center py-4 px-2 border border-2 rounded-bottom bg-white lh-lg fw-bold">
+			<h5 class="fw-bold">Title: {{ element.title }}</h5>
+			<div>Original title: {{ element.original_title }}</div>
 			<div class="languageBox">
 				<div v-if="checkFlag">
 					Language: <img class="flagImg" :src="getFlags(element.original_language)" />
@@ -59,14 +68,18 @@ export default {
 
 				<div v-else>Language: {{ element.original_language }}</div>
 			</div>
-			<div>{{ "Vote: " + element.vote_average }}</div>
+
+			<div class="voteBox">
+				Vote: <i v-for="n in getStars(element.vote_average)" class="fa-solid fa-star"></i>
+				<i v-for="n in getEmptyStars(element.vote_average)" class="fa-regular fa-star"></i>
+			</div>
 		</div>
 	</div>
 </template>
 
 <style scoped>
 .cardInfoBox {
-	height: 13rem;
+	height: 15.5rem;
 }
 
 img {
@@ -77,5 +90,9 @@ img {
 	border: 1px solid black;
 	width: 2rem;
 	height: 100%;
+}
+
+i {
+	color: #ffd43b;
 }
 </style>
