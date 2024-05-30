@@ -12,6 +12,7 @@ export default {
 			img: null,
 			placeholderImgPath: `placeholder-locandine.jpg`,
 			store,
+			checkFlag: true,
 		};
 	},
 	methods: {
@@ -19,6 +20,25 @@ export default {
 			let risultato = new URL(`../../assets/` + path, import.meta.url);
 			return risultato.href;
 		},
+		getFlags(item) {
+			if (item == `it`) {
+				return this.getImg(store.flags.it);
+			} else if (item == `en`) {
+				return this.getImg(store.flags.en);
+			} else if (item == `ja`) {
+				return this.getImg(store.flags.ja);
+			} else if (item == `fr`) {
+				return this.getImg(store.flags.fr);
+			} else if (item == `es`) {
+				return this.getImg(store.flags.es);
+			} else {
+				this.checkFlag = false;
+			}
+		},
+	},
+	mounted() {
+		let numeroStelle;
+		let voto;
 	},
 };
 </script>
@@ -36,30 +56,14 @@ export default {
 		<div class="cardInfoBox text-center py-4 px-2 border border-2 rounded-bottom bg-white">
 			<h5 class="fw-bold">{{ "Title: " + element.name }}</h5>
 			<div>{{ "Original title: " + element.original_name }}</div>
-			<div class="lenguageBox">
-				<div v-if="element.original_language == `it`">
-					{{ "Lenguage: " }} <img class="flagImg" :src="getImg(store.flags.it)" />
+			<div class="languageBox">
+				<div v-if="checkFlag">
+					Language: <img class="flagImg" :src="getFlags(element.original_language)" />
 				</div>
 
-				<div v-else-if="element.original_language == `en`">
-					{{ "Lenguage  " }} <img class="flagImg" :src="getImg(store.flags.en)" />
-				</div>
-
-				<div v-else-if="element.original_language == `ja`">
-					{{ "Lenguage  " }} <img class="flagImg" :src="getImg(store.flags.ja)" />
-				</div>
-
-				<div v-else-if="element.original_language == `fr`">
-					{{ "Lenguage  " }} <img class="flagImg" :src="getImg(store.flags.fr)" />
-				</div>
-
-				<div v-else-if="element.original_language == `es`">
-					{{ "Lenguage  " }} <img class="flagImg" :src="getImg(store.flags.es)" />
-				</div>
-
-				<div v-else>{{ "Lenguage:  " + element.original_language }}</div>
+				<div v-else>Language: {{ element.original_language }}</div>
 			</div>
-			<div>{{ "Vote: " + element.vote_average }}</div>
+			<!-- <div>Vote: <i v-for="" class="fa-solid fa-star"></i></div> -->
 		</div>
 	</div>
 </template>
