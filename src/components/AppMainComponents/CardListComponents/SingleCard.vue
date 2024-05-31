@@ -1,5 +1,6 @@
 <script>
-import store from "../../data/store.js";
+import store from "../../../data/store.js";
+import axios from "axios";
 
 export default {
 	name: "SingleCard",
@@ -17,7 +18,7 @@ export default {
 	},
 	methods: {
 		getImg(path) {
-			let risultato = new URL(`../../assets/` + path, import.meta.url);
+			let risultato = new URL(`../../../assets/` + path, import.meta.url);
 			return risultato.href;
 		},
 		getFlags(item) {
@@ -50,6 +51,34 @@ export default {
 				return element;
 			}
 		},
+		// getCast() {
+		// 	const options = {
+		// 		method: "GET",
+		// 		// url: "https://api.themoviedb.org/3/movie/" + filmID + "/credits",
+		// 		url: "https://api.themoviedb.org/3/movie/653346/credits?api_key=a159ac6f152a4cd7c449aecc3ac8a31e",
+		// 		params: { language: "en-US" },
+		// 		headers: {
+		// 			accept: "application/json",
+		// 			Authorization:
+		// 				"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMTU5YWM2ZjE1MmE0Y2Q3YzQ0OWFlY2MzYWM4YTMxZSIsInN1YiI6IjY2NTcwYjdlM2Q2ZWM5MWU1NjIxNTQ2MSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.d592UGJ9kqS57EJYfxSmAvlCmFSs-NJOV4fwxSTDyKc",
+		// 		},
+		// 	};
+
+		// 	axios
+		// 		.request(options)
+		// 		.then(function (response) {
+		// 			for (let i = 0; i < 5; i++) {
+		// 				store.movieCast.push(response.data.cast[i].name);
+		// 			}
+		// 		})
+		// 		.catch(function (error) {
+		// 			console.error(error);
+		// 		});
+		// 	console.log(store.movieCast);
+		// },
+	},
+	mounted() {
+		// this.getCast();
 	},
 };
 </script>
@@ -91,17 +120,14 @@ export default {
 				<span class="ms-2">{{ element.vote_average.toFixed(1) }} </span>
 			</div>
 
+			<!-- <div class="castBox card-text subtitle">
+				CAST: {{ getCast(element.id) }}
+				<span v-for="i in 5"></span>
+			</div> -->
 			<div class="card-text subtitle">OVERVIEW:</div>
 			<span>{{ element.overview }}</span>
 		</div>
 	</div>
-
-	<!-- <div class="card">
-		<img src="./assets/placeholder-locandine.jpg" class="card-img w-25" />
-		<div class="card-img-overlay">
-			<h2 class="card-title text-black">titolo</h2>
-		</div>
-	</div> -->
 </template>
 
 <style scoped>

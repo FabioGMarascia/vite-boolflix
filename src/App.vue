@@ -23,7 +23,6 @@ export default {
 		handleScroll() {
 			if (window.scrollY > 20) {
 				this.checkScroll = true;
-				console.log(`ciao`);
 			} else {
 				this.checkScroll = false;
 			}

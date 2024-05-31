@@ -1,10 +1,12 @@
 import { reactive } from "vue";
 
 const myData = reactive({
-	filmList: [],
-	popularFilms: [],
+	movieList: [],
+	popularMovies: [],
 	tvSeriesList: [],
 	popularTvSeries: [],
+	movieGenresList: [],
+	tvSeriesGenresList: [],
 	flags: {
 		it: `it.svg`,
 		en: `en.svg`,
@@ -14,7 +16,7 @@ const myData = reactive({
 	},
 	links: [
 		{
-			name: `FILMS`,
+			name: `MOVIES`,
 			url: `#1`,
 		},
 		{
@@ -22,5 +24,8 @@ const myData = reactive({
 			url: `#2`,
 		},
 	],
+	movieTitle: "POPULAR MOVIES",
+	tvSeriesTitle: "POPULAR TV SERIES",
+	movieCast: [],
 });
 export default myData;
