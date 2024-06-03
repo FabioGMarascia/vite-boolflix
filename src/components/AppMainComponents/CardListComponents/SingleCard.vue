@@ -14,7 +14,7 @@ export default {
 			placeholderImgPath: `placeholder-locandine.jpg`,
 			store,
 			checkFlag: true,
-			actorsForMovie: [],
+			// actorsForMovie: [],
 		};
 	},
 	methods: {
@@ -67,6 +67,7 @@ export default {
 		// 	axios
 		// 		.request(options)
 		// 		.then((response) => {
+		// 			this.actorsForMovie = [];
 		// 			for (let i = 0; i < 5; i++) {
 		// 				this.actorsForMovie.push(response.data.cast[i].name);
 		// 			}
@@ -75,6 +76,9 @@ export default {
 		// 			console.error(error);
 		// 		});
 		// },
+	},
+	created() {
+		// this.getCast(this.element.id);
 	},
 };
 </script>
@@ -117,7 +121,7 @@ export default {
 			</div>
 
 			<!-- <div class="castBox card-text subtitle">
-				CAST: {{ getCast(element.id) }}
+				CAST:
 				<div v-for="i in 5" class="text-white">{{ actorsForMovie[i] }}</div>
 			</div> -->
 			<div class="card-text subtitle">OVERVIEW:</div>
@@ -139,6 +143,10 @@ img {
 
 i {
 	color: #ffd43b;
+}
+
+.cardBox:hover {
+	transform: scale(1.1);
 }
 
 .cardInfoBox {
