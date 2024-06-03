@@ -26,6 +26,5 @@ const myData = reactive({
 	],
 	movieTitle: "POPULAR MOVIES",
 	tvSeriesTitle: "POPULAR TV SERIES",
-	movieCast: [],
 });
 export default myData;

@@ -14,6 +14,7 @@ export default {
 			placeholderImgPath: `placeholder-locandine.jpg`,
 			store,
 			checkFlag: true,
+			actorsForMovie: [],
 		};
 	},
 	methods: {
@@ -51,11 +52,10 @@ export default {
 				return element;
 			}
 		},
-		// getCast() {
+		// getCast(filmSeriesID) {
 		// 	const options = {
 		// 		method: "GET",
-		// 		// url: "https://api.themoviedb.org/3/movie/" + filmID + "/credits",
-		// 		url: "https://api.themoviedb.org/3/movie/653346/credits?api_key=a159ac6f152a4cd7c449aecc3ac8a31e",
+		// 		url: "https://api.themoviedb.org/3/movie/" + filmSeriesID + "/credits",
 		// 		params: { language: "en-US" },
 		// 		headers: {
 		// 			accept: "application/json",
@@ -66,19 +66,15 @@ export default {
 
 		// 	axios
 		// 		.request(options)
-		// 		.then(function (response) {
+		// 		.then((response) => {
 		// 			for (let i = 0; i < 5; i++) {
-		// 				store.movieCast.push(response.data.cast[i].name);
+		// 				this.actorsForMovie.push(response.data.cast[i].name);
 		// 			}
 		// 		})
-		// 		.catch(function (error) {
+		// 		.catch((error) => {
 		// 			console.error(error);
 		// 		});
-		// 	console.log(store.movieCast);
 		// },
-	},
-	mounted() {
-		// this.getCast();
 	},
 };
 </script>
@@ -122,7 +118,7 @@ export default {
 
 			<!-- <div class="castBox card-text subtitle">
 				CAST: {{ getCast(element.id) }}
-				<span v-for="i in 5"></span>
+				<div v-for="i in 5" class="text-white">{{ actorsForMovie[i] }}</div>
 			</div> -->
 			<div class="card-text subtitle">OVERVIEW:</div>
 			<span>{{ element.overview }}</span>
